@@ -39,6 +39,10 @@ body {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
+body._lock {
+    overflow: hidden;
+}
+
 .wrapper {
     min-height: 100%;
 }
@@ -259,6 +263,17 @@ body._touch .menu__list > li._active .menu__arrow {
         top: 50%;
         transform: scale(1) translate(0px, -50%)
     }
+    .menu__icon._active span {
+        transform: scale(0) translate(0px, -50%);
+    }
+    .menu__icon._active::before {
+        top: 50%;
+        transform: rotate(-45deg) translate(0px, -50%);
+    }
+    .menu__icon._active::after {
+        bottom: 50%;
+        transform: rotate(45deg) translate(0px, -50%);
+    }
 
     .menu__body {
         position: fixed;
@@ -266,10 +281,14 @@ body._touch .menu__list > li._active .menu__arrow {
         left: 0;
         width: 100%;
         height: 100%;
+        transform: translate(-100%, 0px);
         background-color: rgba(0, 0, 0, 0.9);
         padding: 100px 30px 30px 30px;
         transition: all 03s ease 0s;
         overflow: auto;
+    }
+    .menu__body._active {
+        transform: translate(0px, 0px);
     }
     
     .menu__body::before {
